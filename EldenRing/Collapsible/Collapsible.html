@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../js/jquery.slim.min.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <title>折叠 Collapsible</title>
+    <style>
+        #img1 {
+            height: 300px;
+            width: 500px;
+            display: block;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body style="background-color: beige;">
+    <nav id="navbar-site" class="navbar navbar-dark bg-dark navbar-expand-sm fixed-top right">
+        <div class="container">
+            <a href="../Name and Student Number/S8118644.html" class="navbar-brand">S8118644 李沛洋</a>
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="http://rujiantaohuakai.github.io">Back to Taohua's Blog</a></li>
+                <li class="nav-item"><a class="nav-link" href="../Home.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="../Form/Form.html">Form</a></li>
+                <li class="nav-item"><a class="nav-link" href="../Table1/Table1.html">Table 1</a></li>
+                <li class="nav-item"><a class="nav-link" href="../Carousel/Carousel.html">Carousel</a></li>
+                <li class="nav-item"><a class="nav-link" href="../Table2/Table2.html">Table 2</a></li>
+                <li class="nav-item"><a class="nav-link" href="../Jumbotron/Jumbotron.html">Jumbotron</a></li>
+                <li class="nav-item"><a class="nav-link" href="Collapsible.html">Collapsible</a></li>
+                <li class="nav-item"><a class="nav-link" href="../Card/Card.html">Card</a></li>
+                <li class="nav-item dropdown ">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                        aria-haspopup="true" aria-expanded="false">More</a>
+                    <div class="dropdown-menu" style="background-color: antiquewhite;">
+                        <a class="dropdown-item" href="../More/Model/Modal.html">Model</a>
+                        <a class="dropdown-item" href="../More/Media Object/Meida Object.html">Media Object</a>
+                        <a class="dropdown-item" href="../More/Tooltip/Tooltip.html">Tooltip</a>
+                        <a class="dropdown-item" href="../More/Image shape/Image shape.html">Image shape</a>
+                        <a class="dropdown-item" href="../More/Popover/Popover.html">Popover</a>
+                        <a class="dropdown-item" href="../Name and Student Number/S8118644.html">Nav Tabs</a>
+                        <a class="dropdown-item" href="../Name and Student Number/S8118644.html">Footer</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="../More/Other exercise1-button/Button.html">Other
+                            exercise:Button</a>
+                        <a class="dropdown-item" href="../More/Other exercise2-alerts/Text and Alerts.html">Other
+                            exercise:Text and alerts</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <h2 style="text-align: center;margin-top: 100px;">折叠练习</h2>
+
+    <div class="container">
+        <h3>艾尔登法环故事背景</h3>
+        <p>点击按钮查看详细信息</p>
+        <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#one">故事背景</button>
+        <div id="one" class="collapse">
+            <img src="../Images/collapsible-images/background.jpg" alt="background" id="img1" class="mt-3">
+            <div style="text-align: center;">
+                <p>艾尔登法环的故事发生在一个名为“交界地”的地区，人们拥戴着神明永恒女王玛莉卡，而继承了女王的血脉的子孙，也就是半神们，统治着这里。这片土地及这里的所有人无论贵贱，都受到黄金树的祝福，同时也受黄金律法的束缚，受到祝福的人瞳孔中都寄宿着黄金一般的光芒。艾尔登之兽和黄金流星坠落交界地，形成了艾尔登法环；生命熔炉开始萌发生命，黄金树，黄金子民等百相生物陆续出现。</p>
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+    <div class="container" style="margin-bottom: 100px;">
+        <h3>部分区域介绍</h3>
+        <div id="accordion">
+
+            <div class="card" style="background-color:rgb(244, 244, 182)">
+                <div class="card-header" style="background-color:aquamarine">
+                    <a href="#cone" data-toggle="collapse" class="card-link" style="color: rgb(249, 189, 91);">利耶尼亚</a>
+                </div>
+                <div id="cone" class="collapse show" data-parent="#accordion">
+                    <img class="card-img-top mt-3" src="../Images/collapsible-images/liyeniya.jpg" alt="liyeniya"
+                        id="img1">
+                    <div class="card-body text-center">
+                        <h4 class="card-title">利耶尼亚</h4>
+                        <p class="card-text">
+                            击败葛瑞克，穿过史东薇尔后门，就来到了利耶尼亚湖南侧的断崖高处，老头环的开放世界采用视觉引导，因此“傍湖断崖”这个区域的意义就尤为重要：在这里可以一览整个利耶尼亚湖南侧的全景，玩家可以清楚的看到几个明显的建筑：湖中心高耸的学院，西侧的高山与月光教堂，以及东方遥远处的高原。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="background-color:rgb(196, 228, 171)">
+                <div class="card-header" style="background-color:darkcyan">
+                    <a href="#ctwo" data-toggle="collapse" class="card-link" style="color: rgb(249, 189, 91);">王城罗德尔</a>
+                </div>
+                <div id="ctwo" class="collapse" data-parent="#accordion">
+                    <img class="card-img-top mt-3" src="../Images/collapsible-images/wangcheng2.jpg" alt="wangcheng"
+                        id="img1">
+                    <div class="card-body text-center">
+                        <h4 class="card-title">王城罗德尔</h4>
+                        <p class="card-text">
+                            在刚刚进入王城内时，由于褪色者已经完成了与梅琳娜的约定，将她送到黄金树脚下，她决定寻找自己的使命，与褪色者先行分别了。作为碎片战争的主战场，王城守卫异常森严。所以，在王城罗德尔的内外部，都充斥着大量强大的敌人。例如，双大树骑士，龙装骑士，黄金树化身，腐败树灵，熔炉骑士，狮子兽，以及石像鬼。大量先前地下迷宫，或野外遭遇的Boss，都会在这里重复出现。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="background-color:rgb(205, 226, 245)">
+                <div class="card-header" style="background-color: rgb(185, 243, 243);">
+                    <a href="#cthree" data-toggle="collapse" class="card-link"
+                        style="color: rgb(249, 189, 91);">法姆亚兹拉</a>
+                </div>
+                <div id="cthree" class="collapse" data-parent="#accordion">
+                    <img class="card-img-top mt-3" src="../Images/collapsible-images/famu3.jpg" alt="famu" id="img1">
+                    <div class="card-body text-center">
+                        <h4 class="card-title">法姆·亚兹拉</h4>
+                        <p class="card-text">
+                            烧树之后，我们被传送到天空之城。首先是这个传送来的莫名其妙，玩家根本搞不明白自己是被谁，为何传送到了这里。这也是fs剧情的老毛病了：喜欢当谜语人，玩家也是没办法，只能被动的接受这种设定。但是个人感觉如果能有一个解释的话，这个过程会容易接受的多。
+                        </p>
+                        <a href="../Home.html" class="btn btn-primary">查看更多</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    
+</body>
+
+</html>

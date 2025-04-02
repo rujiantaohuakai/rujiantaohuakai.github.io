@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../js/jquery.slim.min.js"></script>
+    <script src="../../js/popper.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <title>按钮 Button</title>
+</head>
+
+<body style="background-image: url(../../Images/button-images/buttonbackground.jpg);">
+    <nav id="navbar-site" class="navbar navbar-dark bg-dark navbar-expand-sm fixed-top right">
+        <div class="container">
+            <a href="../../Name and Student Number/S8118644.html" class="navbar-brand">S8118644 李沛洋</a>
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="http://rujiantaohuakai.github.io">Back to Taohua's Blog</a></li>
+                <li class="nav-item"><a class="nav-link" href="../../Home.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="../../Form/Form.html">Form</a></li>
+                <li class="nav-item"><a class="nav-link" href="../../Table1/Table1.html">Table 1</a></li>
+                <li class="nav-item"><a class="nav-link" href="../../Carousel/Carousel.html">Carousel</a></li>
+                <li class="nav-item"><a class="nav-link" href="../../Table2/Table2.html">Table 2</a></li>
+                <li class="nav-item"><a class="nav-link" href="../../Jumbotron.html">Jumbotron</a></li>
+                <li class="nav-item"><a class="nav-link" href="../../Collapsible/Collapsible.html">Collapsible</a></li>
+                <li class="nav-item"><a class="nav-link" href="../../Card/Card.html">Card</a></li>
+                <li class="nav-item dropdown ">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                        aria-haspopup="true" aria-expanded="false">More</a>
+                    <div class="dropdown-menu" style="background-color: antiquewhite;">
+                        <a class="dropdown-item" href="../Model/Modal.html">Model</a>
+                        <a class="dropdown-item" href="../Media Object/Meida Object.html">Media Object</a>
+                        <a class="dropdown-item" href="../Tooltip/Tooltip.html">Tooltip</a>
+                        <a class="dropdown-item" href="../Image shape/Image shape.html">Image shape</a>
+                        <a class="dropdown-item" href="../Popover/Popover.html">Popover</a>
+                        <a class="dropdown-item" href="../../Name and Student Number/S8118644.html">Nav Tabs</a>
+                        <a class="dropdown-item" href="../../Name and Student Number/S8118644.html">Footer</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="../Other exercise1-button/Button.html">Other exercise:Button</a>
+                        <a class="dropdown-item" href="../Other exercise2-alerts/Text and Alerts.html">Other exercise:Text and alerts</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <h1 style="text-align: center;margin-top: 100px;" id="top">艾尔登法环按钮选择</h1>
+
+    <div class="container-fluid mt-5" id="all">
+        <div>
+            <h3>问题1：满月女王是谁<small>(按钮组)</small></h3>
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary">选A</button>
+                <button type="button" class="btn btn-primary">选B</buttoAn>
+                    <button type="button" class="btn btn-primary">选C</button>
+            </div>
+            <ul style="list-style-type:none">
+                <li>A. 蕾娜菈</li>
+                <li>B. 菈妮</li>
+                <li>C. 瑟濂</li>
+            </ul>
+        </div>
+
+        <div class="mt-5">
+            <h3>问题2：初代艾尔登之王是谁<small>(垂直按钮组)</small></h3>
+            <div class="btn-group-vertical">
+                <button type="button" class="btn btn-primary">选A</button>
+                <button type="button" class="btn btn-primary">选B</button>
+                <button type="button" class="btn btn-primary">选C</button>
+            </div>
+            <ul style="list-style-type:none">
+                <li>A. 拉达冈</li>
+                <li>B. 葛瑞克</li>
+                <li>C. 葛孚雷</li>
+            </ul>
+        </div>
+
+        <div class="mt-5">
+            <h3>查看人物详细信息<small>(利用内嵌按钮组创建下拉菜单)</small></h3>
+            <div class="btn-group">
+                <a href="#top" class="btn btn-primary btn-lg" role="button">拉塔恩</a>
+                <a href="#bottom" class="btn btn-primary btn-lg" role="button">菈妮</a>
+                <button type="button" class="btn btn-primary btn-lg">拉卡德</button>
+                <button type="button" class="btn btn-primary btn-lg">拉达冈</button>
+
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary dropdown-toggle btn-lg" data-toggle="dropdown">
+                        葛孚雷子嗣： <span class="caret"></span><!-- 向下的小箭头 -->
+                    </button>
+                    <ul class="dropdown-menu" role="menu" style="text-align: center;background-color: antiquewhite;">
+                        <li><a href="" style="color:blueviolet">葛德温</a></li>
+                        <li><a href="" style="color:blueviolet">蒙葛特</a></li>
+                        <li><a href="" style="color:blueviolet">蒙格</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="mt-5">其他按钮练习：</h2>
+
+        <div class="container-fluid mt-5" id="one">
+            <h3>bootstrap 按钮类型练习</h3>
+            <p class="mt-4">标准的按钮</p>
+            <button type="button" class="btn btn-default">这是默认的按钮</button>
+            
+            <p class="mt-4">提供额外视觉效果的按钮，标识一组按钮中的原始动作</p>
+            <button type="button" class="btn btn-primary">这是蓝色的原始按钮</button>
+            
+            <p class="mt-4">表示一个成功的或者积极的动作的按钮</p>
+            <button type="button" class="btn btn-success">这是绿色的成功按钮</button>
+           
+            <p class="mt-4">表示警告消息的上下文按钮</p>
+            <button type="button" class="btn btn-info">这是浅蓝色的警告按钮</button>
+            
+            <p class="mt-4">表示应该谨慎采取的动作的按钮</p>
+            <button type="button" class="btn btn-warning">这是黄色警告按钮</button>
+            
+            <p class="mt-4">表示一个危险的或潜在的负面动作的按钮</p>
+            <button type="button" class="btn btn-danger">这是红色的危险按钮</button>
+            
+            <p class="mt-4">不强调是个按钮，看起来像一个链接，但同时保持按钮的行为的按钮</p>
+            <button type="button" style="background-color: rgb(194, 217, 218);"
+                class="btn btn-link">这是看起来是链接，实际上是按钮的按钮</button>
+            
+            <p class="mt-4">这是a标签包含btn类形成的按钮，有链接功能</p>
+            <a href="#one" class="btn btn-default" role="button">这是一个链接</a>
+            
+            <p class="mt-4">这是input标签包含btn类形成的按钮</p>
+            <input type="button" class="btn btn-default" value="输入">
+            
+            <p class="mt-4">这是input标签包含btn类形成的提交按钮</p>
+            <input type="submit" class="btn btn-default" value="提交">
+        </div>
+
+
+        <div class="container-fluid mt-5" id="two">
+            <h3 class="mb-4">bootstrap 按钮大小练习</h3>
+            <button type="button" class="btn btn-primary btn-lg">这是大的原始按钮</button>
+
+            <button type="button" class="btn btn-default btn-lg">这是大的按钮</button>
+
+            <button type="button" class="btn btn-primary"> 这是默认大小的原始按钮</button>
+
+            <button type="button" class="btn btn-default"> 这是默认大小的按钮</button>
+
+            <button type="button" class="btn btn-primary btn-sm">这是小的原始按钮</button>
+
+            <button type="button" class="btn btn-default btn-sm">这是小的按钮</button>
+
+
+            <button type="button" class="btn btn-primary btn-lg btn-block">这是块级的原始按钮</button>
+            <button type="button" class="btn btn-default btn-lg btn-block">这是块级的按钮</button>
+
+        </div>
+
+
+        <div class="container-fluid mt-5" id="three">
+            <h3>bootstrap 按钮状态练习</h3>
+            <p>active 激活 disabled 禁用 </p>
+            <button type="button" class="btn btn-default btn-lg ">这是默认按钮</button>
+
+            <button type="button" class="btn btn-default btn-lg active">这是激活按钮</button>
+
+            <button type="button" class="btn btn-primary btn-lg ">这是原始按钮</button>
+
+            <button type="button" class="btn btn-primary btn-lg active">这是激活的原始按钮</button>
+
+            <button type="button" class="btn btn-default btn-lg">这是默认按钮</button>
+
+            <button type="button" class="btn btn-default btn-lg" disabled="disabled">这是禁用默认按钮</button>
+
+            <button type="button" class="btn btn-primary btn-lg ">这是原始按钮</button>
+
+            <button type="button" class="btn btn-primary btn-lg" disabled="disabled">这是禁用的原始按钮</button>
+
+            <button type="button" class="btn btn-primary btn-lg" disabled>这也是禁用的原始按钮</button>
+
+            <a href="#" class="btn btn-default btn-lg" role="button">这是链接按钮</a>
+
+            <a href="#" class="btn btn-default btn-lg disabled" role="button">禁用链接按钮</a>
+
+        </div>
+
+        <p style="text-align: center;" class="mt-5">
+            <a href="#top" class="btn btn-default btn-lg" role="button" style="background-color: brown;">点我回到顶部</a>
+        </p>
+</body>
+
+</html>

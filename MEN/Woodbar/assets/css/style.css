@@ -1,0 +1,773 @@
+/* ----------------------
+[Table of contents]
+ 
+01.Default CSS
+02.Preloader CSS
+03.Navbar CSS
+04.Header Pagination
+05.Main Banner & Services
+06.Products CSS
+07.Categories CSS
+08.Showcase CSS
+09.Our Team CSS
+10.Video CSS
+11.Testimonial CSS
+12.Offer Section CSS
+13.Blogs CSS
+14.Collection CSS
+15.Footer CSS
+16.Blogs Detail Page CSS
+17.Contact Page CSS
+
+ --------------------------*/
+
+
+ /*======================================
+ ============== Default CSS =============
+ ======================================== */
+html{
+  scroll-behavior: smooth;
+}
+body{
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+:root{
+    --blue: #6730e3;
+}
+h1,h2,h3,h4,h5,h6{
+    padding: 0;
+    margin: 0;
+}
+section{
+    padding: 100px 0;
+}
+ul{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+p{
+    font-size: 15px;
+    padding: 0;
+    margin: 0;
+}
+span{font-size: 14px;}
+.section-title-area{
+    margin-bottom: 30px;
+    margin-top: -6px;
+    display: flex;
+    justify-content: space-between;
+}
+.section-title h2{font-weight: 600; font-size: 25px;}
+a{
+    font-size: 15px;
+    color: #000;
+    transition: .5s all ease;
+    -webkit-transition: .5s all ease;
+    -moz-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    -o-transition: all .5s ease;
+}
+a:hover{
+    color: #000;
+    text-decoration: none;
+}
+.btn{
+    color: #fff;
+    background-color: #000;
+    padding: 5px 14px;
+    border: 1px solid #000;
+    border-radius: 0px;
+    position: relative;
+    overflow: hidden;
+    transition: .5s all ease;
+    -webkit-transition: .5s all ease;
+    -moz-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    -o-transition: all .5s ease;
+}
+.btn::before{
+  content: "";
+  height: 0;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  transition: .5s all ease;
+  -webkit-transition: .5s all ease;
+  -moz-transition: all .5s ease;
+  -ms-transition: all .5s ease;
+  -o-transition: all .5s ease;
+}
+.btn span{position: relative;}
+.btn span::after{
+  content: '\f340';
+  font-family: "Font Awesome 5 Pro";
+  padding-left: 5px;
+}
+.btn:focus{box-shadow: none;}
+.btn:hover{
+  color: #000;
+  background-color: #fff;
+  border-color: #000;
+}
+.btn:hover::before{height: 100%;}
+.pb-70{padding-bottom: 70px;}
+.pb-50{padding-bottom: 50px;}
+.mb-30{margin-bottom: 30px;}
+.mb-50{margin-bottom: 50px;}
+.color-black{color: #000!important;}
+.color-white{color: #fff!important;}
+.bold{font-weight: bold;}
+.bold-500{font-weight: 500;}
+.bold-600{font-weight: 600;}
+.fs-18{font-size: 18px;}
+.fs-16{font-size: 16px;}
+.fs-15{font-size: 15px;}
+.fs-14{font-size: 14px;}
+.uppercase{text-transform: uppercase;}
+.underline{text-decoration: underline;}
+.italic{font-style: italic;}
+.align{align-self: center;}
+.relative{position: relative;}
+.no-overflow{overflow: hidden;}
+.transition{
+  transition: .5s all ease;
+  -webkit-transition: .5s all ease;
+  -moz-transition: all .5s ease;
+  -ms-transition: all .5s ease;
+  -o-transition: all .5s ease;
+}
+.form-control{
+    height: 30px;
+    border-radius: 0px;
+    border: none;
+    border-bottom: 1px solid #000;
+    padding-right: 47px;
+    background: transparent;
+}
+.form-control:focus{
+  border-color: #000;
+  box-shadow: none;
+  background: transparent;
+}
+.form-icon{
+  position: absolute;
+  top: 6px;
+  right: 11px;
+  color: #c1c1c1;
+}
+.sticky{
+  background-color: #fff;
+  top: 0!important;
+  z-index: 2;
+  border-bottom: 1px solid #0000001e;
+  transition: .5s all ease;
+  -webkit-transition: .5s all ease;
+  -moz-transition: all .5s ease;
+  -ms-transition: all .5s ease;
+  -o-transition: all .5s ease;
+}
+ /*======================================
+ ============ PreLoader CSS =============
+ ======================================== */
+ .loader-wrap {
+  position: fixed;
+  z-index: 999999;
+  background: #fff;
+  width: 100%;
+  height: 100%;
+}
+.loader{
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.loader:before{
+  content: "";
+  width: 50px;
+  height: 5px;
+  border-radius: 50%;
+  background: #000;
+  opacity: 0.1;
+  position: absolute;
+  top: 59px;
+  left: 0;
+  animation: shadow .5s linear infinite;
+}
+.loader:after{
+  content: "";
+  width: 50px;
+  height: 50px;
+  border-radius: 3px;
+  background:#2c2c2c;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: loading .5s linear infinite;
+}
+@-webkit-keyframes loading{
+  17% {
+      border-bottom-right-radius: 3px;
+  }
+  25% {
+      transform: translateY(9px) rotate(22.5deg);
+  }
+  50% {
+      transform: translateY(18px) scale(1, 0.9) rotate(45deg);
+      border-bottom-right-radius: 40px;
+  }
+  75% {
+      transform: translateY(9px) rotate(67.5deg);
+  }
+  100% {
+      transform: translateY(0) rotate(90deg);
+  }
+}
+@keyframes loading{
+  17% {
+      border-bottom-right-radius: 3px;
+  }
+  25% {
+      transform: translateY(9px) rotate(22.5deg);
+  }
+  50% {
+      transform: translateY(18px) scale(1, 0.9) rotate(45deg);
+      border-bottom-right-radius: 40px;
+  }
+  75% {
+      transform: translateY(9px) rotate(67.5deg);
+  }
+  100% {
+      transform: translateY(0) rotate(90deg);
+  }
+}
+@-webkit-keyframes shadow{
+  0%,
+  100% {
+      transform: scale(1, 1);
+  }
+  50% {
+      transform: scale(1.2, 1);
+  }
+}
+@keyframes shadow{
+  0%,
+  100% {
+      transform: scale(1, 1);
+  }
+  50% {
+      transform: scale(1.2, 1);
+  }
+}
+ /*======================================
+ =============== Navbar CSS =============
+ ======================================== */
+ /* Top Header */
+ .top-header{
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   z-index: 9;
+   padding: 10px 0;
+ }
+ /* Navbar */
+ .navbar{
+   position: fixed;
+   top: 25px;
+   left: 0;
+   z-index: 9;
+   width: 100%;
+ }
+ .navbar-brand{
+   font-weight: bold;
+   font-size: 20px;
+ }
+ .navbar-toggler{
+   outline: none!important;
+ }
+ .navbar-toggle-icon{
+   color: #fff;
+ }
+ .nav-link{
+  position: relative; 
+  overflow: hidden; 
+  display: inline-block;
+  padding: 10px 0!important;
+  color: #fff!important; 
+  font-size: 15px; 
+  font-weight: 500;
+  }
+ .navbar-brand{color: #fff!important;}
+ .nav-item{margin: 0 15px;}
+ .sticky .nav-link{color: #000!important}
+ .sticky .navbar-brand{color: #000!important}
+ .sticky .navbar-toggle-icon{color: #000!important}
+ .nav-link::after{
+  content: "";
+  position: absolute;
+  bottom: 6px;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  opacity: 0;
+  margin: 0 auto;
+  background-color: #ffffff;
+  transition: .5s all ease;
+  -webkit-transition: .5s all ease;
+  -moz-transition: all .5s ease;
+  -ms-transition: all .5s ease;
+  -o-transition: all .5s ease;
+}
+.nav-link:hover::after{
+ opacity: 1;
+ width: 100%;
+}
+.nav-link.active::after{
+   opacity: 1;
+   width: 100%;
+}
+.sticky .nav-link::after{
+  background-color: #000;
+}
+/*======================================
+ =========== Header Pagination =========
+ ======================================= */
+ .header-pagination{
+  background-image: url(../images/header-pagination.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 150px;
+  padding-bottom: 50px;
+  position: relative;
+  overflow: hidden;
+}
+.header-pagination .container{
+  position: relative;
+}
+.header-pagination::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #000000a8;
+}
+ /*======================================
+ ====== Main Banner & Services ==========
+ ======================================== */
+ #main-banner-carousel .item{
+   background-repeat: no-repeat;
+   background-size: cover;
+   padding: 320px 0;
+ }
+ #main-banner-carousel .item::before{
+   content: '';
+   position: absolute;
+   top: 0;
+   left: 0;
+   height: 100%;
+   width: 100%;
+   background-color: #00000054;
+}
+.main-banner-textarea{
+  position: absolute;
+  top: 70%;
+  left: 32%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+}
+/* Services */
+.services-box{justify-content: center;}
+.services-txt{font-size: 12px;}
+.services-box-icon{font-size: 25px;}
+ /*======================================
+ =============== Products CSS ===========
+ ======================================== */
+ .product-txt{
+   position: absolute;
+   bottom: 40px;
+   right: 50px;
+ }
+ .product-explore{position: relative; overflow: hidden; float: right;}
+ .product-explore::before{
+   content: '';
+   position: absolute;
+   width: 0%;
+   height: 1px;
+   bottom: 0;
+   right: 0;
+   background-color: #fff;
+   transition: .3s all ease;
+   -webkit-transition: .3s all ease;
+   -moz-transition: all .3s ease;
+   -ms-transition: all .3s ease;
+   -o-transition: all .3s ease;
+ }
+ .product-explore:hover::before{
+   width: 100%;
+ }
+ .product-box:hover img{
+   filter: brightness(70%);
+   transform: scale(1.1);
+ }
+ .product-box:hover .product-txt{color: #fff;}
+ .product-box:hover .product-explore{color: #fff;}
+ /*======================================
+ ============ Categories CSS ============
+ ======================================== */
+#categories{padding-bottom: 90px;}
+.categories-icon{font-size: 40px;}
+.categories-txt{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  opacity: 0;
+}
+.categories-box:hover img{
+  filter: brightness(60%);
+}
+.categories-box:hover .categories-txt{
+  opacity: 1;
+}
+ /*======================================
+ =============== Showcase CSS ===========
+ ======================================== */
+.showcase-img{
+  position: relative;
+  overflow: hidden;
+  opacity: 0.4;
+  transition: .5s all ease;
+  -webkit-transition: .5s all ease;
+  -moz-transition: all .5s ease;
+  -ms-transition: all .5s ease;
+  -o-transition: all .5s ease;
+}
+.showcase-bg-txt{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 160px;
+  text-transform: uppercase;
+  font-family: 'Londrina Outline', cursive;
+}
+.showcase-img:hover{
+  opacity: 1;
+}
+.showcase-links-box{
+  position: absolute;
+  top: 50%;
+  right: 0%;
+  transform: translateY(-50%);
+}
+.showcase-link{
+  background-color: #000;
+  color: #fff!important;
+  display: block;
+  width: 100px;
+  padding: 2px 20px;
+  font-size: 12px;
+  position: relative;
+  right: -80px;
+  opacity: 0;
+}
+.showcase-link:hover{
+  right: 0;
+}
+.showcase-img:hover .showcase-link{
+  opacity: 1;
+}
+ /*======================================
+ ============== Our Team CSS ============
+ ======================================== */
+ .team-tag{
+  background-color: #000;
+  display: inline-block;
+  padding: 1px 10px;
+  color: #fff;
+  position: absolute;
+  top: 0;
+  right: -90px;
+}
+.team-social-icons{
+  position: absolute;
+  top: -75px;
+  left: -70px;
+  transform: rotate(90deg);
+}
+.team-social-icons li{
+  line-height: 35px;
+}
+.team-box:hover img{
+  filter: brightness(50%);
+  transform: rotate(5deg) scale(1.1);
+}
+.team-box:hover .team-social-icons{
+  transform: rotate(0deg);
+  top: 0;
+  left: 5px;
+}
+.team-box:hover .team-tag{
+  right: 0;
+}
+ /*======================================
+ =============== Video CSS ==============
+ ======================================== */
+#video{
+  background-image: url(../images/video-bg.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  padding: 150px 0 120px 0;
+}
+#video::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #0000006b;
+}
+.video-img img{
+  filter: brightness(80%);
+}
+.play-icon{
+  font-size: 40px;
+}
+.video-stat-box{
+  padding: 0 30px;
+}
+/*======================================
+ ============= Testimonial CSS =========
+ ======================================= */
+ .testimonial-client-img{
+  width: 80px!important;
+  margin: 0 auto;
+}
+/*======================================
+ =========== Offer Section CSS =========
+ ======================================= */
+ .offer-txt{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  padding: 0 125px;
+}
+.offer-box:hover img{
+  transform: scale(1.05);
+}
+.offer-link::before{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background-color: #000;
+  transition: .5s all ease;
+  -webkit-transition: .5s all ease;
+  -moz-transition: all .5s ease;
+  -ms-transition: all .5s ease;
+  -o-transition: all .5s ease;
+}
+.offer-link:hover::before{
+  width: 40%;
+}
+ /*======================================
+ ================ Blogs CSS =============
+ ======================================== */
+.blog-info{
+  position: absolute; 
+  bottom: 0;
+  background-color: #fff;
+  padding: 0 10px;
+}
+.readmore-link:hover{letter-spacing: 2px;}
+/*======================================
+ ============= Collection CSS ==========
+ ======================================= */
+ #collection-carousel{border-top: 1px solid #00000044; border-bottom: 1px solid #00000044;}
+.collection-overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: #fff;
+  text-align: center;
+}
+.collection-overlay-txt {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #000;
+}
+.collection-icon{
+  font-size: 20px;
+}
+.collection-img:hover .collection-overlay{
+  background: #ffffffa8;
+}
+ /*======================================
+ =============== Footer CSS =============
+ ======================================== */
+/*======================================
+ =============== Footer CSS ===========
+ ======================================= */
+ footer{
+  padding-top: 60px;
+  background: #fff;
+}
+.footer-logo{
+  text-transform: uppercase;
+  font-weight: bold;
+
+  font-size: 20px;
+}
+.footer-social-icons a{
+  color: #000;
+  padding-right: 20px;
+}
+.footer-list a{
+  color: #5f5f5f;
+  line-height: 30px;
+}
+.lower-footer .container{
+  border-top: 1px solid #000;
+  padding: 10px 0;
+}
+/*======================================
+ ======== Blogs Detail Page CSS ========
+ ======================================= */
+ .blogs-detail-highlighted-box{
+  border-left: 4px solid #000;
+  padding: 40px 25px;
+  position: relative;
+  overflow: hidden;
+}
+.blogs-detail-highlighted-box::before{
+  content: '\f10d';
+  font-family: "Font Awesome 5 Pro";
+  font-size: 30px;
+  color: #dbdbdb;
+  position: absolute;
+  top: 0;
+  left: 10px;
+}
+.panel-search-btn{
+  background: none;
+  border: none;
+  outline: none!important;
+}
+.blogs-detail-panel-heading{
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+.blogs-detail-panel-heading::after{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  width: 80%;
+  background-color: #000;
+}
+.blogs-detail-panel-list a{
+  text-transform: uppercase;
+  line-height: 35px;
+  position: relative;
+  padding-bottom: 5px;
+}
+.blogs-detail-panel-list a::after{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 1px;
+  width: 20%;
+  background-color: #000;
+  transition: .5s all ease;
+  -webkit-transition: .5s all ease;
+  -moz-transition: all .5s ease;
+  -ms-transition: all .5s ease;
+  -o-transition: all .5s ease;
+}
+.blogs-detail-panel-list a:hover::after{
+  width: 60%;
+}
+.blogs-detail-tags ul li{
+  display: inline;
+  margin: 5px;
+  line-height: 40px;
+}
+.blogs-detail-tags ul li::after{
+  content: '\f148';
+  font-family: "Font Awesome 5 Pro";
+  font-size: 10px;
+  padding-left: 5px;
+}
+.blogs-detail-posts .media-left{
+  width: 200px;
+  margin-right: 10px;
+}
+.popular-post-title{
+  line-height: 25px;
+  font-size: 18px;
+}
+/*======================================
+ =========== Contact Page CSS ==========
+ ======================================= */
+ .contact-heading::before{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 20%;
+  background-color: #000;
+ }
+ /*======================================
+ =========== Gallery Page CSS ==========
+ ======================================= */
+ /* .gallery-img img{border-right: 1px solid #fff;} */
+ .gallery-img{
+   border: 1px solid #fff;
+ }
+ .gallery-img-overlay{
+   position: absolute;
+   top: 0;
+   left: 0;
+   background: rgba(0, 0, 0, 0.432);
+   height: 100%;
+   width: 100%;
+   transform: scale(0);
+ }
+ .gallery-img-overlay a{
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   color: #fff;
+   font-size: 22px;
+ }
+ .gallery-img:hover .gallery-img-overlay{
+   transform: scale(1);
+ }

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>提示工具 Tooltip</title>
+    <script src="../../js/jquery.slim.min.js"></script>
+    <script src="../../js/popper.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+</head>
+<body style="background-image: url(../../Images/tooltip-images/background2.jpg); background-size: 100%;">
+  <nav id="navbar-site" class="navbar navbar-dark bg-dark navbar-expand-sm fixed-top right">
+    <div class="container">
+        <a href="../../Name and Student Number/S8118644.html" class="navbar-brand">S8118644 李沛洋</a>
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="http://rujiantaohuakai.github.io">Back to Taohua's Blog</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../Home.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../Form/Form.html">Form</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../Table1/Table1.html">Table 1</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../Carousel/Carousel.html">Carousel</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../Table2/Table2.html">Table 2</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../Jumbotron.html">Jumbotron</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../Collapsible/Collapsible.html">Collapsible</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../Card/Card.html">Card</a></li>
+            <li class="nav-item dropdown ">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                    aria-haspopup="true" aria-expanded="false">More</a>
+                <div class="dropdown-menu" style="background-color: antiquewhite;">
+                    <a class="dropdown-item" href="../Model/Modal.html">Model</a>
+                    <a class="dropdown-item" href="../Media Object/Meida Object.html">Media Object</a>
+                    <a class="dropdown-item" href="../Tooltip/Tooltip.html">Tooltip</a>
+                    <a class="dropdown-item" href="../Image shape/Image shape.html">Image shape</a>
+                    <a class="dropdown-item" href="../Popover/Popover.html">Popover</a>
+                    <a class="dropdown-item" href="../../Name and Student Number/S8118644.html">Nav Tabs</a>
+                    <a class="dropdown-item" href="../../Name and Student Number/S8118644.html">Footer</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../Other exercise1-button/Button.html">Other exercise:Button</a>
+                    <a class="dropdown-item" href="../Other exercise2-alerts/Text and Alerts.html">Other exercise:Text and alerts</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+  
+  <h2 style="text-align: center;margin-top: 100px;">艾尔登法环人物<small>tooltip</small></h2>
+  <div class="container" style="text-align: center;margin-top: 20px;">
+    <h3>法环初代艾尔登之王</h3>
+    <a href="#" class="tooltip-test" data-toggle="tooltip" title="葛孚雷" data-placement="left" style="color:rgb(108, 116, 224); font-size: 30px;"> 初始之王 </a>
+    <a href="#" class="tooltip-test" data-toggle="tooltip" title="葛孚雷" data-placement="bottom" style="color:rgb(108, 116, 224); font-size: 30px;"> 初始之王 </a>
+    <a href="#" class="tooltip-test" data-toggle="tooltip" title="葛孚雷" data-placement="top" style="color:rgb(108, 116, 224); font-size: 30px;"> 初始之王 </a>
+    <a href="#" class="tooltip-test" data-toggle="tooltip" title="葛孚雷" data-placement="right" style="color:rgb(108, 116, 224); font-size: 30px;"> 初始之王 </a>
+  </div>
+
+  <div class="container" style="text-align: center;margin-top: 20px;">
+    <h3>法环魔法学院领导者</h3>
+    <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="蕾娜菈" style="color:rgb(108, 116, 224); font-size: 30px;">满月女王</button>
+    <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="蕾娜菈" style="color:rgb(108, 116, 224); font-size: 30px;">满月女王</button>
+    <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="蕾娜菈" style="color:rgb(108, 116, 224); font-size: 30px;">满月女王</button>
+    <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="蕾娜菈" style="color:rgb(108, 116, 224); font-size: 30px;">满月女王</button>
+  </div>
+
+
+<script>
+  $(document).ready(
+    function(){
+      $('[data-toggle=tooltip]').tooltip();
+    }
+  );
+</script>
+</body>
+</html>

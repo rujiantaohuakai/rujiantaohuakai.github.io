@@ -1,0 +1,187 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>如何实现商品搜索功能（Search Products） | Taohua's Blog</title><meta name="author" content="Taohua,m1773101654@outlook.com"><meta name="copyright" content="Taohua"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="前端实战：如何实现商品搜索功能 (Search Products)在电商网站或产品展示页面中，搜索功能是必不可少的。今天我们来分享如何使用纯前端（HTML + CSS + Vanilla JS）实现一个基础的商品搜索与动态渲染功能。 1. HTML 结构我们只需要一个搜索框容器以及一个用于展示搜索结果的网格容器。 123456789&lt;main id&#x3D;&quot;search&quot; cl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何实现商品搜索功能（Search Products）">
+<meta property="og:url" content="http://example.com/2026/02/21/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%95%86%E5%93%81%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD%EF%BC%88Search-Products%EF%BC%89/index.html">
+<meta property="og:site_name" content="Taohua&#39;s Blog">
+<meta property="og:description" content="前端实战：如何实现商品搜索功能 (Search Products)在电商网站或产品展示页面中，搜索功能是必不可少的。今天我们来分享如何使用纯前端（HTML + CSS + Vanilla JS）实现一个基础的商品搜索与动态渲染功能。 1. HTML 结构我们只需要一个搜索框容器以及一个用于展示搜索结果的网格容器。 123456789&lt;main id&#x3D;&quot;search&quot; cl">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/music_cat.gif">
+<meta property="article:published_time" content="2026-02-21T05:26:28.000Z">
+<meta property="article:modified_time" content="2026-05-23T05:31:00.469Z">
+<meta property="article:author" content="Taohua">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/music_cat.gif"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "如何实现商品搜索功能（Search Products）",
+  "url": "http://example.com/2026/02/21/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%95%86%E5%93%81%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD%EF%BC%88Search-Products%EF%BC%89/",
+  "image": "http://example.com/img/music_cat.gif",
+  "datePublished": "2026-02-21T05:26:28.000Z",
+  "dateModified": "2026-05-23T05:31:00.469Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Taohua",
+      "url": "http://example.com"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon_img.png"><link rel="canonical" href="http://example.com/2026/02/21/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%95%86%E5%93%81%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD%EF%BC%88Search-Products%EF%BC%89/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const mediaQueryDark = window.matchMedia('(prefers-color-scheme: dark)')
+          const mediaQueryLight = window.matchMedia('(prefers-color-scheme: light)')
+
+          if (theme === undefined) {
+            if (mediaQueryLight.matches) activateLightMode()
+            else if (mediaQueryDark.matches) activateDarkMode()
+            else {
+              const hour = new Date().getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            mediaQueryDark.addEventListener('change', () => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else {
+            theme === 'light' ? activateLightMode() : activateDarkMode()
+          }
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '如何实现商品搜索功能（Search Products）',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(/img/background.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/music_cat.gif" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">30</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">18</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">5</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/algorithm/"><i class="fa-fw fas fa-book"></i><span> 算法</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/videos/"><i class="fa-fw fas fa-video"></i><span> 视频</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-file-code"></i><span> Demo</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/EldenRing/Home.html"><i class="fa-fw fas fa-ring"></i><span> EldenRing</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/top_default_img.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/music_cat.gif" alt="Logo"><span class="site-name">Taohua's Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">如何实现商品搜索功能（Search Products）</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/algorithm/"><i class="fa-fw fas fa-book"></i><span> 算法</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/videos/"><i class="fa-fw fas fa-video"></i><span> 视频</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-file-code"></i><span> Demo</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/EldenRing/Home.html"><i class="fa-fw fas fa-ring"></i><span> EldenRing</span></a></li></ul></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">如何实现商品搜索功能（Search Products）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-02-21T05:26:28.000Z" title="Created 2026-02-21 13:26:28">2026-02-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-05-23T05:31:00.469Z" title="Updated 2026-05-23 13:31:00">2026-05-23</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="前端实战：如何实现商品搜索功能-Search-Products"><a href="#前端实战：如何实现商品搜索功能-Search-Products" class="headerlink" title="前端实战：如何实现商品搜索功能 (Search Products)"></a>前端实战：如何实现商品搜索功能 (Search Products)</h2><p>在电商网站或产品展示页面中，搜索功能是必不可少的。今天我们来分享如何使用纯前端（HTML + CSS + Vanilla JS）实现一个基础的商品搜索与动态渲染功能。</p>
+<h3 id="1-HTML-结构"><a href="#1-HTML-结构" class="headerlink" title="1. HTML 结构"></a>1. HTML 结构</h3><p>我们只需要一个搜索框容器以及一个用于展示搜索结果的网格容器。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">main</span> <span class="attr">id</span>=<span class="string">&quot;search&quot;</span> <span class="attr">class</span>=<span class="string">&quot;page&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>搜索产品<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;search-bar&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">id</span>=<span class="string">&quot;search-input&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;输入笔记本型号、品牌...&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;btn&quot;</span> <span class="attr">onclick</span>=<span class="string">&quot;searchProducts()&quot;</span>&gt;</span>搜索<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 搜索结果将动态渲染在这里 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;product-grid&quot;</span> <span class="attr">id</span>=<span class="string">&quot;search-results&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">main</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-CSS-样式"><a href="#2-CSS-样式" class="headerlink" title="2. CSS 样式"></a>2. CSS 样式</h3><p>为了让搜索框和产品卡片看起来更美观，我们添加了如下的 Flex 布局和 Grid 布局样式：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 搜索区样式 */</span></span><br><span class="line"><span class="selector-class">.search-bar</span> &#123; <span class="attribute">display</span>: flex; <span class="attribute">gap</span>: <span class="number">10px</span>; <span class="attribute">margin-bottom</span>: <span class="number">20px</span>; &#125;</span><br><span class="line"><span class="selector-class">.search-bar</span> <span class="selector-tag">input</span> &#123; <span class="attribute">flex</span>: <span class="number">1</span>; <span class="attribute">padding</span>: <span class="number">10px</span>; <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#ddd</span>; <span class="attribute">border-radius</span>: <span class="number">4px</span>; &#125;</span><br><span class="line"><span class="selector-class">.btn</span> &#123; <span class="attribute">padding</span>: <span class="number">10px</span> <span class="number">20px</span>; <span class="attribute">background-color</span>: <span class="number">#e74c3c</span>; <span class="attribute">color</span>: white; <span class="attribute">border</span>: none; <span class="attribute">border-radius</span>: <span class="number">5px</span>; <span class="attribute">cursor</span>: pointer; <span class="attribute">transition</span>: background <span class="number">0.3s</span>; &#125;</span><br><span class="line"><span class="selector-class">.btn</span><span class="selector-pseudo">:hover</span> &#123; <span class="attribute">background-color</span>: <span class="number">#c0392b</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 购物网格 &amp; 卡片 */</span></span><br><span class="line"><span class="selector-class">.product-grid</span> &#123; <span class="attribute">display</span>: grid; <span class="attribute">grid-template-columns</span>: <span class="built_in">repeat</span>(auto-fill, <span class="built_in">minmax</span>(<span class="number">250px</span>, <span class="number">1</span>fr)); <span class="attribute">gap</span>: <span class="number">20px</span>; &#125;</span><br><span class="line"><span class="selector-class">.product-card</span> &#123; <span class="attribute">background</span>: white; <span class="attribute">padding</span>: <span class="number">20px</span>; <span class="attribute">border-radius</span>: <span class="number">8px</span>; <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">2px</span> <span class="number">10px</span> <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.1</span>); <span class="attribute">text-align</span>: center; &#125;</span><br><span class="line"><span class="selector-class">.product-card</span> <span class="selector-tag">img</span> &#123; <span class="attribute">width</span>: <span class="number">100%</span>; <span class="attribute">height</span>: <span class="number">150px</span>; <span class="attribute">object-fit</span>: cover; <span class="attribute">margin-bottom</span>: <span class="number">15px</span>; <span class="attribute">border-radius</span>: <span class="number">4px</span>; &#125;</span><br><span class="line"><span class="selector-class">.product-price</span> &#123; <span class="attribute">color</span>: <span class="number">#e74c3c</span>; <span class="attribute">font-size</span>: <span class="number">1.2rem</span>; <span class="attribute">font-weight</span>: bold; <span class="attribute">margin</span>: <span class="number">10px</span> <span class="number">0</span>; &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-JavaScript-核心逻辑"><a href="#3-JavaScript-核心逻辑" class="headerlink" title="3. JavaScript 核心逻辑"></a>3. JavaScript 核心逻辑</h3><p>这里我们模拟了一个包含笔记本电脑数据的数组，并使用 <code>filter()</code> 方法根据用户的输入来过滤并渲染结果：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 模拟数据库产品数据</span></span><br><span class="line"><span class="keyword">const</span> products = [</span><br><span class="line">    &#123; <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">name</span>: <span class="string">&quot;ProBook X15&quot;</span>, <span class="attr">price</span>: <span class="number">1299.99</span>, <span class="attr">img</span>: <span class="string">&quot;[https://via.placeholder.com/250x150?text=ProBook+X15](https://via.placeholder.com/250x150?text=ProBook+X15)&quot;</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">id</span>: <span class="number">2</span>, <span class="attr">name</span>: <span class="string">&quot;Gamer Ultra 17&quot;</span>, <span class="attr">price</span>: <span class="number">1999.00</span>, <span class="attr">img</span>: <span class="string">&quot;[https://via.placeholder.com/250x150?text=Gamer+Ultra](https://via.placeholder.com/250x150?text=Gamer+Ultra)&quot;</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">id</span>: <span class="number">3</span>, <span class="attr">name</span>: <span class="string">&quot;Slimbook Air&quot;</span>, <span class="attr">price</span>: <span class="number">999.50</span>, <span class="attr">img</span>: <span class="string">&quot;[https://via.placeholder.com/250x150?text=Slimbook+Air](https://via.placeholder.com/250x150?text=Slimbook+Air)&quot;</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">id</span>: <span class="number">4</span>, <span class="attr">name</span>: <span class="string">&quot;DevStation Pro&quot;</span>, <span class="attr">price</span>: <span class="number">2499.00</span>, <span class="attr">img</span>: <span class="string">&quot;[https://via.placeholder.com/250x150?text=DevStation+Pro](https://via.placeholder.com/250x150?text=DevStation+Pro)&quot;</span> &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">searchProducts</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// 获取用户输入的关键词并转为小写</span></span><br><span class="line">    <span class="keyword">const</span> query = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;search-input&#x27;</span>).<span class="property">value</span>.<span class="title function_">toLowerCase</span>();</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 过滤匹配的产品</span></span><br><span class="line">    <span class="keyword">const</span> results = products.<span class="title function_">filter</span>(<span class="function"><span class="params">p</span> =&gt;</span> p.<span class="property">name</span>.<span class="title function_">toLowerCase</span>().<span class="title function_">includes</span>(query));</span><br><span class="line">    <span class="keyword">const</span> resultContainer = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;search-results&#x27;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 如果没有找到结果</span></span><br><span class="line">    <span class="keyword">if</span> (results.<span class="property">length</span> === <span class="number">0</span>) &#123;</span><br><span class="line">        resultContainer.<span class="property">innerHTML</span> = <span class="string">&#x27;&lt;p&gt;未找到相关产品...&lt;/p&gt;&#x27;</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 动态渲染搜索结果卡片</span></span><br><span class="line">    resultContainer.<span class="property">innerHTML</span> = results.<span class="title function_">map</span>(<span class="function"><span class="params">p</span> =&gt;</span> <span class="string">`</span></span><br><span class="line"><span class="string">        &lt;div class=&quot;product-card&quot;&gt;</span></span><br><span class="line"><span class="string">            &lt;img src=&quot;<span class="subst">$&#123;p.img&#125;</span>&quot; alt=&quot;<span class="subst">$&#123;p.name&#125;</span>&quot;&gt;</span></span><br><span class="line"><span class="string">            &lt;h3&gt;<span class="subst">$&#123;p.name&#125;</span>&lt;/h3&gt;</span></span><br><span class="line"><span class="string">            &lt;div class=&quot;product-price&quot;&gt;$<span class="subst">$&#123;p.price.toFixed(<span class="number">2</span>)&#125;</span>&lt;/div&gt;</span></span><br><span class="line"><span class="string">            &lt;button class=&quot;btn&quot; onclick=&quot;addToCart(<span class="subst">$&#123;p.id&#125;</span>)&quot;&gt;加入购物车&lt;/button&gt;</span></span><br><span class="line"><span class="string">        &lt;/div&gt;</span></span><br><span class="line"><span class="string">    `</span>).<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">Taohua</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/2026/02/21/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%95%86%E5%93%81%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD%EF%BC%88Search-Products%EF%BC%89/">http://example.com/2026/02/21/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%95%86%E5%93%81%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD%EF%BC%88Search-Products%EF%BC%89/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/music_cat.gif" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/02/22/%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%BD%BB%E9%87%8F%E7%BA%A7%E5%8A%A8%E6%80%81%E8%B4%AD%E7%89%A9%E8%BD%A6%EF%BC%88Shopping-Cart%EF%BC%89/" title="实现一个轻量级动态购物车（Shopping Cart）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">实现一个轻量级动态购物车（Shopping Cart）</div></div><div class="info-2"><div class="info-item-1">前端实战：实现一个轻量级动态购物车 (Shopping Cart)购物车是电商系统的核心模块。本篇文章将带你用原生 JavaScript 实现一个具备“添加、展示、移除、总价计算”功能的动态购物车。 1. HTML 结构购物车需要一个容器来动态渲染列表项，以及一个展示总金额和去结算按钮的底部区域。 123456789101112&lt;main id=&quot;cart&quot; class=&quot;page&quot;&gt;    &lt;h2&gt;我的购物车&lt;/h2&gt;    &lt;!-- 购物车商品列表容器 --&gt;    &lt;div id=&quot;cart-items-container&quot;&gt;        &lt;p&gt;购物车还是空的，去选购几款心仪的笔记本吧！&lt;/p&gt;    &lt;/div&gt;        &lt;!-- 底部总价与结算 --&gt;    &lt;div class=&quot;cart-total&quot;&gt;总计: $&lt;span id=&quot;cart-to...</div></div></div></a><a class="pagination-related" href="/2025/11/20/Qt/%E7%BB%83%E4%B9%A0/03/Qt%E4%BF%A1%E5%8F%B7%E4%B8%8E%E6%A7%BD/" title="Qt信号与槽"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">Qt信号与槽</div></div><div class="info-2"><div class="info-item-1">Qt 信号与槽 test_1()：信号与槽的测试 test_2()：自定义信号的测试 test_3()：信号和槽重载二义性解决方法  main.cpp123456789101112131415161718192021222324252627282930#include &quot;Widget.h&quot;#include &lt;QApplication&gt;// Windows下使用Visual Studio时下调出控制台#pragma comment( linker, &quot;/subsystem:console&quot;)int main(int argc, char *argv[])&#123;    QApplication a(argc, argv);    //Widget w;    //w.show();    //return a.exec();    // 智能指针    //auto w = std::make_unique&lt;Widget&gt;();    //w-&gt;show();    //return a.exec();   ...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/music_cat.gif" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Taohua</div><div class="author-info-description">一名计算机科学与技术专业的大学牲</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">30</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">18</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/rujiantaohuakai"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/rujiantaohuakai" target="_blank" title="Github"><i class="fab fa-github" style="color: #e3e8f4;"></i></a><a class="social-icon" href="/m17731016540@outlook.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is Taohua's Blog! Welcome to you!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E5%AE%9E%E6%88%98%EF%BC%9A%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%95%86%E5%93%81%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD-Search-Products"><span class="toc-number">1.</span> <span class="toc-text">前端实战：如何实现商品搜索功能 (Search Products)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-HTML-%E7%BB%93%E6%9E%84"><span class="toc-number">1.1.</span> <span class="toc-text">1. HTML 结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-CSS-%E6%A0%B7%E5%BC%8F"><span class="toc-number">1.2.</span> <span class="toc-text">2. CSS 样式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-JavaScript-%E6%A0%B8%E5%BF%83%E9%80%BB%E8%BE%91"><span class="toc-number">1.3.</span> <span class="toc-text">3. JavaScript 核心逻辑</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/14/LaoJCpp/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/%E7%BA%BF%E7%A8%8B%E6%B1%A0/" title="Cpp多线程编程-线程池">Cpp多线程编程-线程池</a><time datetime="2026-03-14T06:46:26.000Z" title="Created 2026-03-14 14:46:26">2026-03-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/12/LaoJCpp/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/" title="Cpp异步编程">Cpp异步编程</a><time datetime="2026-03-12T12:11:21.000Z" title="Created 2026-03-12 20:11:21">2026-03-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/10/LaoJCpp/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/7%E6%AD%BB%E9%94%81/" title="Cpp多线程编程7-死锁">Cpp多线程编程7-死锁</a><time datetime="2026-03-10T13:19:31.000Z" title="Created 2026-03-10 21:19:31">2026-03-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/08/LaoJCpp/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/6%E6%A0%85%E6%A0%8F-barrier/" title="Cpp多线程编程6-栅栏(barrier)">Cpp多线程编程6-栅栏(barrier)</a><time datetime="2026-03-08T11:44:23.000Z" title="Created 2026-03-08 19:44:23">2026-03-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/07/LaoJCpp/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/5%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%92%8Ccounting-semaphore/" title="Cpp多线程编程5-信号量和counting_semaphore">Cpp多线程编程5-信号量和counting_semaphore</a><time datetime="2026-03-07T07:16:04.000Z" title="Created 2026-03-07 15:16:04">2026-03-07</time></div></div></div></div></div></div></main><footer id="footer" style="background: linear-gradient(20deg, #0062be, #925696, #cc426e, #fb0347);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Taohua</span></div><div class="footer_custom_text">The real talent is resolution aspirations.</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
